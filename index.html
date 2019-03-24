@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pretty Checkboxes</title>
+</head>
+<body>
+
+<style>
+body { font-family: sans-serif; }
+.visually-hidden {
+	position: absolute !important;
+	clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+	clip: rect(1px, 1px, 1px, 1px);
+	padding:0 !important;
+	border:0 !important;
+	height: 1px !important; 
+	width: 1px !important; 
+	overflow: hidden;
+}
+
+@keyframes check {
+    0% { transform: scale(0) }
+    70% { transform: scale(1.3) }
+    100% { transform: scale(1) }
+}
+
+.check__label {
+    font-size: 1.2em;
+}
+
+.check__text::before {
+    content: '';
+    display: inline-block;
+    background: url('img/unchecked.svg') no-repeat center center;
+    height: 1em;
+    width: 1em;
+    cursor: pointer;
+    margin-right: 0.3em;
+    border-radius: 3px;
+}
+
+.check__input:checked + .check__text::before {
+    background: url('img/checked.svg');
+    animation-name: check;
+    animation-timing-function: ease-out;
+    animation-duration: 0.2s;
+}
+
+.check__input:focus + .check__text::before {
+    box-shadow: 0 0 0 1px white, 0 0 0 4px rgb(24, 132, 221);
+}
+
+
+</style>
+    <form>
+        <label class="check__label">
+            <input type="checkbox" class="check__input visually-hidden" name="checkbox">
+            <span class="check__text">Checkbox 1</span>
+        </label><br>
+        <label class="check__label">
+            <input type="checkbox" class="check__input visually-hidden" name="checkbox">
+            <span class="check__text">Checkbox 2</span>
+        </label><br>
+        <label class="check__label">
+            <input type="checkbox" class="check__input visually-hidden" name="checkbox">
+            <span class="check__text">Checkbox 3</span>
+        </label>
+    </form>
+</body>
+</html>
